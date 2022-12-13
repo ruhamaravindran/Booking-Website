@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<main>
+    <!-- Hero Area Start-->
+    <div class="slider-area ">
+        <div class="single-slider slider-height2 d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Checkout</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--================Checkout Area =================-->
+    <section class="checkout_area section_padding">
+      <div class="container">
+        <div class="returning_customer">
+          <div class="check_title">
+            
+              
+            
+        <div class="billing_details">
+          <div class="row">
+            <div class="col-lg-8">
+              <h3>Book An Appoinment</h3>
+              <form action="{% url 'getBooking' %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="firstname" value="{{request.session.u_firstname}}" name="firstname " />
+                  
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="lastname" value="{{request.session.u_lastname}}" name="lastname" />
+                  
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="phone" value="{{request.session.u_phone}}" name="phone" />
+
+                </div>
+                <div class="col-md-6 form-group p_star">
+                  <input type="text" class="form-control" id="email" value="{{request.session.u_email}}" name="email" />
+
+                </div>
+              </div>
+              <div class="row">
+                 <div class="col-md-6 form-group">
+                  <input type="date" class="form-control" id="date" name="date" placeholder="dd/mm/yyy" />
+                </div>
+                <div class="col-md-6 form-group">
+                  <input type="time" class="form-control" id="date" name="time" placeholder="time" />
+                </div>
+              <br>
+                    <button type="submit" value="submit" class="btn_3">Book Now</button>
+                  <div class="">
+                    
+                  </div>
+                </div>
+                <div class="col-md-12 form-group">
+                  <div class="creat_account">
+                    
+                  </div>
+                  
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-4">
+              <div class="order_box">
+                <h2>Your Order</h2>
+                <ul class="list">
+                  <li>
+                    <a href="#">Product
+                      <span>Total</span>
+                    </a>
+                    {% for j in data %}
+                  </li>
+                  <li>
+                    <a href="#">{{j.serviceid.name}}
+                      <span class="last">{{j.total}}</span>
+                    </a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              
+                <ul class="list list_2">
+                  
+                  
+                  <li>
+                    <a href="#">Total
+                      <span>Rs. {{x}}</span>
+                    </a>
+                  </li>
+                </ul>
+               
+                
+                 
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--================End Checkout Area =================-->
+
+{% endblock %}

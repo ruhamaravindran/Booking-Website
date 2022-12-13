@@ -1,0 +1,40 @@
+{% extends 'adminindex.html' %}
+    {% load static %}
+    {% block content %}
+<body>
+  <div class="container">        
+    <div class="row">
+    <div class="col-lg-6" style="margin-top: 30px;">
+<div> 
+    {% for i in data %}  
+    <form action="{% url 'update' did=i.id %}" method="post" enctype = "multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{i.name}}">
+          </div>
+          <div class="mb-3">
+            <label for="cars">Branch</label>
+            <select name="branch" id="branch" value="branch">
+              <option value="{{i.branch}}">{{i.branch}}</option>
+              {% for i in branch %}
+              <option value="{{i.name}}">{{i.name}}</option>
+              {% endfor %}
+            </select>
+            </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" name="price" value="{{i.price}}">   
+        </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" name="image">   
+      </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      {% endfor %} 
+</div>
+    </div>
+    </div>
+  </div>
+  {% endblock %}

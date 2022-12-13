@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<main>
+  <!-- Hero Area Start-->
+  <div class="slider-area ">
+      <div class="single-slider slider-height2 d-flex align-items-center">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xl-12">
+                      <div class="hero-cap text-center">
+                          <h2>Cart List</h2>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!--================Cart Area =================-->
+  <section class="cart_area section_padding">
+    <div class="container">
+      <div class="cart_inner">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for j in data %}
+              <tr>
+                <td>
+                  <div class="media">
+                    <div class="d-flex">
+                      <img src="{{j.serviceid.image.url}}" alt="">
+                    </div>
+                    <div class="media-body">
+                      <p>{{j.serviceid.name}}</p>
+                      
+                    </div>
+                  </div>
+                  <td><a href="{% url 'cartdelete' did=j.id %}"><i class="fa fa-trash-o" aria-hidden="true" style="font-size:36px;color:rgb(170, 33, 33)"></i></a></td>
+                  
+                </td>
+                <td>
+                  <h5>{{j.total}}</h5>
+                </td>
+              </tr>
+              {% endfor %}
+              <tr class="bottom_button">
+                <td>
+                  
+                </td>
+                <td>Total</td>
+                <td>Rs. {{x}}</td>
+                
+              </tr>
+              
+              
+            </tbody>
+          </table>
+          <div class="checkout_btn_inner float-right">
+            <a class="btn_1" href="{% url 'services' %}">Continue Shopping</a>
+            <a class="btn_1 checkout_btn_1" href="{% url 'checkout' %}">Proceed to checkout</a>
+          </div>
+        </div>
+      </div>
+  </section>
+  <!--================End Cart Area =================-->
+</main>
+
+{% endblock %}

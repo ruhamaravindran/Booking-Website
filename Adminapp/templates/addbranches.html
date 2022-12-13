@@ -1,0 +1,57 @@
+{% extends 'adminindex.html' %}
+
+    <!-- Content Header (Page header) -->
+    {% block content %}
+    <section class="content-header">
+    </section>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          
+          <div class="col-md-9">
+            
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Add Branches</h3>
+              </div>
+              <form action="{% url 'getData' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Discription</label>
+                    <textarea class="form-control" id="description" placeholder="description" name="description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="image">Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <input type="file" class="custom-file-input" id="image" name="image">
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6">
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
